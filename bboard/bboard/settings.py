@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+
+    'django_cleanup',
+    'easy_thumbnails',
+
     'main.apps.MainConfig',
 ]
 
@@ -64,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.middlewares.bboard_context_processor',
             ],
         },
     },
@@ -122,9 +127,24 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'main/static'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+THUMBNAIL_ALLIASES = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale',
+        },
+    },
+}
+
+THUMBNAIL_BASEDIR = 'thumbnails'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

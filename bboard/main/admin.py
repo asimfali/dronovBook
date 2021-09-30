@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import AdvUser, SuperRubric, SubRubric
+from .forms import SubRubricForm
 
 admin.site.register(AdvUser)
 
@@ -15,3 +16,10 @@ class SuperRubricAdmin(admin.ModelAdmin):
 
 
 admin.site.register(SuperRubric, SuperRubricAdmin)
+
+
+class SubRubricAdmin(admin.ModelAdmin):
+    form = SubRubricForm
+
+
+admin.site.register(SubRubric, SubRubricAdmin)
